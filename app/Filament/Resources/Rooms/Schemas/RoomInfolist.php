@@ -12,8 +12,9 @@ class RoomInfolist
     {
         return $schema
             ->components([
-                TextEntry::make('room_type_id')
-                    ->numeric(),
+                // Changed from room_type_id to roomType.name
+                TextEntry::make('roomType.name')
+                    ->label('Room Type'),
                 TextEntry::make('room_number'),
                 TextEntry::make('floor_number'),
                 TextEntry::make('current_status'),

@@ -15,4 +15,11 @@ class Room extends Model
         'is_clean',
         'last_cleaned_at'
     ];
+
+    // app/Models/Room.php
+
+    public function roomType(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(\App\Models\RoomType::class);
+    }
 }

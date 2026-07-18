@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Rooms\Schemas;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\Select; // <- Added this import
 use Filament\Schemas\Schema;
 
 class RoomForm
@@ -13,9 +14,13 @@ class RoomForm
     {
         return $schema
             ->components([
-                TextInput::make('room_type_id')
+                // Swapped TextInput for Select and linked the relationship
+                Select::make('room_type_id')
+                    ->relationship('roomType', 'name')
                     ->required()
-                    ->numeric(),
+                    ->searchable()
+                    ->preload(),
+
                 TextInput::make('room_number')
                     ->required(),
                 TextInput::make('floor_number')

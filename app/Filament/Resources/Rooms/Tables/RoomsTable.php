@@ -16,9 +16,11 @@ class RoomsTable
     {
         return $table
             ->columns([
-                TextColumn::make('room_type_id')
-                    ->numeric()
-                    ->sortable(),
+                // Changed from room_type_id to roomType.name
+                TextColumn::make('roomType.name')
+                    ->label('Room Type')
+                    ->sortable()
+                    ->searchable(),
                 TextColumn::make('room_number')
                     ->searchable(),
                 TextColumn::make('floor_number')
